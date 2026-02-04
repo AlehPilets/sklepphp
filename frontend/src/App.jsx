@@ -26,7 +26,7 @@ function App() {
 
   const fetchProducts = async () => {
     try {
-      const res = await fetch('http://localhost:5000/api/products');
+      const res = await fetch('https://sklepphp-api.onrender.com/api/products');
       const data = await res.json();
       setProducts(data);
     } catch (err) { console.error(err); }
@@ -34,7 +34,7 @@ function App() {
 
   const fetchUserOrders = async () => {
     try {
-      const res = await fetch(`http://localhost:5000/api/orders/${user.name}`);
+      const res = await fetch(`https://sklepphp-api.onrender.com/api/orders/${user.name}`);
       const data = await res.json();
       setUserOrders(data);
     } catch (err) { console.error(err); }
@@ -60,7 +60,7 @@ function App() {
     if (delivery === 'kurier' && (!address.city || !address.street || !address.house)) return alert("Uzupełnij dane adresowe!");
 
     try {
-      const res = await fetch('http://localhost:5000/api/orders', {
+      const res = await fetch('https://sklepphp-api.onrender.com/api/orders', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ 
@@ -80,7 +80,7 @@ function App() {
 
   const addProduct = async (e) => {
     e.preventDefault();
-    await fetch('http://localhost:5000/api/products', {
+    await fetch('https://sklepphp-api.onrender.com/api/products', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(newProduct)
@@ -91,7 +91,7 @@ function App() {
 
   const updateProduct = async (e) => {
     e.preventDefault();
-    await fetch(`http://localhost:5000/api/products/${editProduct._id}`, {
+    await fetch(`https://sklepphp-api.onrender.com/api/products/${editProduct._id}`, {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(editProduct)
@@ -102,7 +102,7 @@ function App() {
 
   const deleteProduct = async (id) => {
     if (window.confirm("Usunąć produkt?")) {
-      await fetch(`http://localhost:5000/api/products/${id}`, { method: 'DELETE' });
+      await fetch(`https://sklepphp-api.onrender.com/api/products/${id}`, { method: 'DELETE' });
       fetchProducts();
     }
   };
