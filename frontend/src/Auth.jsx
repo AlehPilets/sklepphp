@@ -9,7 +9,7 @@ export default function Auth({ setUser }) {
     const endpoint = isLogin ? 'login' : 'register';
     
     try {
-      const res = await fetch(`http://localhost:5000/api/auth/${endpoint}`, {
+      const res = await fetch(`https://sklepphp-api.onrender.com/api/auth/${endpoint}`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData)
